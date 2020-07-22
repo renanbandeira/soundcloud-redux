@@ -30,7 +30,10 @@
     "test": "cross-env NODE_PATH=. react-scripts test --env=jsdom",
     "test:ci": "cross-env CI=true NODE_PATH=. react-scripts test --env=jsdom",
     "test:server": "ava server/spec.js --verbose",
-    "version": "npm run changelog && git add CHANGELOG.md"
+    "version": "npm run changelog && git add CHANGELOG.md",
+    "cypress:open": "cypress open",
+    "serve:build": "http-server build -p 8080",
+    "cypress:build:open": "yarn build && start-server-and-test serve:build http://localhost:8080 cypress:open",
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -66,6 +69,7 @@
     "npm-run-all": "^4.0.2",
     "react-test-renderer": "^15.6.1",
     "sinon": "^2.4.1",
+    "start-server-and-test": "^1.11.2",
     "superagent": "^3.5.2",
     "supertest": "^3.0.0"
   }
