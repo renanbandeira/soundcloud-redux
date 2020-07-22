@@ -32,8 +32,8 @@
     "test:server": "ava server/spec.js --verbose",
     "version": "npm run changelog && git add CHANGELOG.md",
     "cypress:open": "cypress open",
-    "serve:build": "http-server build -p 8080",
-    "cypress:build:open": "yarn build && start-server-and-test serve:build http://localhost:8080 cypress:open"
+    "serve:build": "http-server serve -p 8080",
+    "cypress:build:open": "yarn build && start-server-and-test start http://localhost:8080 cypress:open"
   },
   "dependencies": {
     "classnames": "^2.2.5",
