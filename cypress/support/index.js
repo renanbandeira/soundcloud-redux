@@ -19,6 +19,16 @@ import './commands';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-Cypress.on('window:before:load', (win) => {
-  delete win.fetch;
+// Hack to always bind cy.server() to bind to webAppWindow
+Cypress.on('window:load', (window) => {
+	// Get webApp iframe
+	const docIframe = window.parent.document.getElementById("Your App: 'soundcloud-redux'");
+	const webAppWindow = docIframe.contentWindow;
+
+	// Get current cypress server thats started
+	const server = Cypress.state().server;
+	if (server) {
+		// bind server to our webApp window
+		server.bindTo(webAppWindow);
+	}
 });
